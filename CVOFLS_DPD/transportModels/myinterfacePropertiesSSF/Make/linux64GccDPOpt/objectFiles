@@ -1,0 +1,3 @@
+OBJECTS = \
+$(OBJECTS_DIR)/myinterfacePropertiesSSF.o\
+$(OBJECTS_DIR)/interfaceCompression.o

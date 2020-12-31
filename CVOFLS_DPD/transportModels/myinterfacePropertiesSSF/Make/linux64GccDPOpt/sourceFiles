@@ -1,0 +1,3 @@
+SOURCE = \
+myinterfacePropertiesSSF.C\
+interfaceCompression/interfaceCompression.C

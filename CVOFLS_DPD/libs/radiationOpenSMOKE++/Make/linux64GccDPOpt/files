@@ -1,0 +1,75 @@
+# 1 "files"
+# 1 "<built-in>"
+# 1 "<command-line>"
+
+
+
+
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+
+# 17 "/usr/include/stdc-predef.h" 3 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 4 "<command-line>" 2
+# 1 "files"
+
+include/laminarSMOKEthermoClass.C
+
+
+radiationModels/radiationModel/OpenSMOKEradiationModel.C
+radiationModels/radiationModel/OpenSMOKEradiationModelNew.C
+radiationModels/noRadiation/noRadiation.C
+radiationModels/opticallyThin/opticallyThin.C
+radiationModels/P1/P1.C
+radiationModels/fvDOM/fvDOM/fvDOM.C
+radiationModels/fvDOM/radiativeIntensityRay/radiativeIntensityRay.C
+radiationModels/fvDOM/blackBodyEmission/blackBodyEmission.C
+radiationModels/fvDOM/absorptionCoeffs/absorptionCoeffs.C
+radiationModels/viewFactor/viewFactor.C
+radiationModels/opaqueSolid/opaqueSolid.C
+
+
+submodels/scatterModel/scatterModel/OpenSMOKEscatterModel.C
+submodels/scatterModel/scatterModel/OpenSMOKEscatterModelNew.C
+submodels/scatterModel/noScatter/noScatter.C
+submodels/scatterModel/constantScatter/constantScatter.C
+
+
+submodels/absorptionEmissionModel/absorptionEmissionModel/OpenSMOKEabsorptionEmissionModel.C
+submodels/absorptionEmissionModel/absorptionEmissionModel/OpenSMOKEabsorptionEmissionModelNew.C
+submodels/absorptionEmissionModel/noAbsorptionEmission/noAbsorptionEmission.C
+submodels/absorptionEmissionModel/constantAbsorptionEmission/constantAbsorptionEmission.C
+submodels/absorptionEmissionModel/binaryAbsorptionEmission/binaryAbsorptionEmission.C
+submodels/absorptionEmissionModel/greyMeanAbsorptionEmission/greyMeanAbsorptionEmission.C
+submodels/absorptionEmissionModel/wideBandAbsorptionEmission/wideBandAbsorptionEmission.C
+
+
+derivedFvPatchFields/MarshakRadiation/OpenSMOKEMarshakRadiationFvPatchScalarField.C
+derivedFvPatchFields/MarshakRadiationFixedTemperature/OpenSMOKEMarshakRadiationFixedTemperatureFvPatchScalarField.C
+derivedFvPatchFields/greyDiffusiveRadiation/OpenSMOKEgreyDiffusiveRadiationMixedFvPatchScalarField.C
+derivedFvPatchFields/wideBandDiffusiveRadiation/OpenSMOKEwideBandDiffusiveRadiationMixedFvPatchScalarField.C
+derivedFvPatchFields/radiationCoupledBase/radiationCoupledBase.C
+derivedFvPatchFields/greyDiffusiveViewFactor/OpenSMOKEgreyDiffusiveViewFactorFixedValueFvPatchScalarField.C
+
+LIB = $(FOAM_USER_LIBBIN)/libradiationOpenSMOKE++

@@ -1,0 +1,4 @@
+include mixedUserDefined/mixedUserDefinedFvPatchFields.dep
+include backwardDiffusion/backwardDiffusionFvPatchScalarField.dep
+include speciesWall/speciesWallFvPatchScalarField.dep
+include depositionWall/depositionWallFvPatchScalarField.dep

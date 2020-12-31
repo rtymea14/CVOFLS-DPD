@@ -1,0 +1,3 @@
+LOCAL_OBJECTS = \
+myinterfacePropertiesSSF.o\
+interfaceCompression.o

@@ -1,0 +1,5 @@
+DEPENDENCIES = \
+mixedUserDefined/mixedUserDefinedFvPatchFields.dep\
+backwardDiffusion/backwardDiffusionFvPatchScalarField.dep\
+speciesWall/speciesWallFvPatchScalarField.dep\
+depositionWall/depositionWallFvPatchScalarField.dep

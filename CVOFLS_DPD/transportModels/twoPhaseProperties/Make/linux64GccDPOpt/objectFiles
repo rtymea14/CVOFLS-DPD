@@ -1,0 +1,7 @@
+OBJECTS = \
+$(OBJECTS_DIR)/alphaContactAngleFvPatchScalarField.o\
+$(OBJECTS_DIR)/constantAlphaContactAngleFvPatchScalarField.o\
+$(OBJECTS_DIR)/temperatureDependentAlphaContactAngleFvPatchScalarField.o\
+$(OBJECTS_DIR)/dynamicAlphaContactAngleFvPatchScalarField.o\
+$(OBJECTS_DIR)/timeVaryingAlphaContactAngleFvPatchScalarField.o\
+$(OBJECTS_DIR)/alphaFixedPressureFvPatchScalarField.o

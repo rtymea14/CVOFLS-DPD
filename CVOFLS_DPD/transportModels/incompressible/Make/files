@@ -1,0 +1,5 @@
+
+
+mySemiCompressibleTwoPhaseMixtureSSF/mySemiCompressibleTwoPhaseMixtureSSF.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmySemiCompressibleTransportModels

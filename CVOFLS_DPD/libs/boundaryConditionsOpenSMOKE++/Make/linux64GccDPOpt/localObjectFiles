@@ -1,0 +1,5 @@
+LOCAL_OBJECTS = \
+mixedUserDefinedFvPatchFields.o\
+backwardDiffusionFvPatchScalarField.o\
+speciesWallFvPatchScalarField.o\
+depositionWallFvPatchScalarField.o

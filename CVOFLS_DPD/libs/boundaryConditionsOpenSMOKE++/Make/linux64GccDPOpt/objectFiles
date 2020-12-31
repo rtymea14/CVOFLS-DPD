@@ -1,0 +1,5 @@
+OBJECTS = \
+$(OBJECTS_DIR)/mixedUserDefinedFvPatchFields.o\
+$(OBJECTS_DIR)/backwardDiffusionFvPatchScalarField.o\
+$(OBJECTS_DIR)/speciesWallFvPatchScalarField.o\
+$(OBJECTS_DIR)/depositionWallFvPatchScalarField.o

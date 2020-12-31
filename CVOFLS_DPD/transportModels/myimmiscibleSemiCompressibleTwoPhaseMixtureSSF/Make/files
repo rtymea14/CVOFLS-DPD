@@ -1,0 +1,3 @@
+myimmiscibleSemiCompressibleTwoPhaseMixtureSSF.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyimmiscibleSemiCompressibleTwoPhaseMixture

@@ -1,0 +1,2 @@
+include myinterfacePropertiesSSF.dep
+include interfaceCompression/interfaceCompression.dep

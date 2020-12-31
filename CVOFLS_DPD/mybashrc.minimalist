@@ -1,0 +1,51 @@
+#OpenFOAM VERSION (22, 23, 24, 30, 40, 50, 60, 1000)
+#dev version is equivalent to >= 1000
+export OPENFOAM_VERSION='-DOPENFOAM_VERSION=23'
+
+#If OpenFOAM dev version is used, this must be equal to 1
+export DEVVERSION='-DDEVVERSION=0'
+
+#Compulsory path
+export EIGEN_LIBRARY_PATH=/home/rthvc/data/Smoke++/eigen-3.3.7
+export BOOST_LIBRARY_PATH=/home/rthvc/data/boost-1.67.0-l6lax5bytfbe5xg3xp4bbamgmfljmhzz
+export RAPIDXML_LIBRARY_PATH=/home/rthvc/data/Smoke++/rapidxml-1.13
+export ISOADVECTION=/home/rthvc/data/isoAdvector-master/OpenFOAM-2.3.1/src
+ 
+#Options: ISAT support
+export ISAT_SUPPORT='-DOPENSMOKE_USE_ISAT=0'
+export ISAT_INCLUDE=
+export ISAT_LIBS=
+
+#Options
+export MKL_SUPPORT='-DOPENSMOKE_USE_MKL=0'
+export EXTERNAL_ODE_SOLVERS=
+
+#Only if the OPENSMOKE_USE_MKL is turned on
+export MKL_PATH=
+export MKL_INCLUDE=
+export MKL_LIBS=
+
+#Optional external ODE solvers
+export MEBDF_LIBS=
+export RADAU_LIBS=
+export DASPK_LIBS=
+export ODEPACK_LIBS=
+export LINPACK_LIBS=
+export SUNDIALS_PATH=
+export SUNDIALS_LIBS=
+#================================================#
+#- source cfdem env vars
+export CFDEM_VERSION=PUBLIC
+export CFDEM_PROJECT_DIR=$HOME/CFDEM/CFDEMcoupling-$CFDEM_VERSION-$WM_PROJECT_VERSION
+export CFDEM_SRC_DIR=$CFDEM_PROJECT_DIR/src
+export CFDEM_SOLVER_DIR=$CFDEM_PROJECT_DIR/applications/solvers
+export CFDEM_DOC_DIR=$CFDEM_PROJECT_DIR/doc
+export CFDEM_UT_DIR=$CFDEM_PROJECT_DIR/applications/utilities
+export CFDEM_TUT_DIR=$CFDEM_PROJECT_DIR/tutorials
+export CFDEM_PROJECT_USER_DIR=$HOME/CFDEM/$LOGNAME-$CFDEM_VERSION-$WM_PROJECT_VERSION
+export CFDEM_bashrc=$CFDEM_SRC_DIR/lagrangian/cfdemParticle/etc/bashrc
+export CFDEM_LIGGGHTS_SRC_DIR=$HOME/LIGGGHTS-PUBLIC-2.3.8/src
+export CFDEM_LIGGGHTS_MAKEFILE_NAME=fedora_fpic
+export CFDEM_LPP_DIR=$HOME/LPP/src
+. $CFDEM_bashrc
+#================================================#
