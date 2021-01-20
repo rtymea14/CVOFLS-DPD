@@ -1,0 +1,508 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+
+    "rho.*"
+    {
+        solver          diagonal;
+    }
+/*
+    rho2Final
+    {
+                $rho2;
+        relTol          0;
+    }
+
+*/
+    "alpha.water.*"
+    {
+        interfaceMethod "isoAdvector";
+        isoFaceTol      1e-6;
+        surfCellTol     1e-6;
+        snapAlphaTol    1e-12;
+        nAlphaBounds    3;
+        clip            true;
+
+
+        nAlphaCorr      1;
+        nAlphaSubCycles 1;
+        cAlpha          1;
+
+        MULESCorr       yes;
+        nLimiterIter    3;
+
+        Cpc             0.999;
+        Csk             1;
+        Cflux           0.01;
+        NAlphaFilters   50;
+        NCurvatureFilters 3;
+        TypeOfGradient  1;
+
+
+
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-8;
+        relTol          0;
+    }
+
+    Heaviside
+    {
+        nAlphaCorr      1;
+        nAlphaSubCycles 4;
+        cAlpha          1;
+        Cpc             0.9;
+        Csk             1;
+        Cflux           0.01;
+        NAlphaFilters   10;
+        NCurvatureFilters  5;
+        TypeOfGradient  1;
+
+        MULESCorr       yes;
+        nLimiterIter    3;
+
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-8;
+        relTol          0;
+    }
+/*
+    pcorr
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-5;
+        relTol          0;
+    }
+*/
+
+pcorr
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-07;
+            relTol          0;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-07;
+        relTol          0;
+        maxIter         100;
+    }
+
+   pcorrFinal
+    {
+        $pcorr;
+        relTol          0;
+    }
+
+
+
+
+ p //p_rgh
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          1E-6;
+        smoother        DICGaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+	maxIter		25;
+    }
+
+ p_rgh
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          1E-6;
+        smoother        DICGaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+	maxIter		25;
+    }
+
+ p_rghAdv
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          1E-6;
+        smoother        DICGaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+	maxIter		25;
+    }
+
+    Yi
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-9;
+        relTol          0;
+	minIter		1;
+    }
+
+    Xi
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-9;
+        relTol          0;
+	minIter		1;
+    }
+
+//p_rghFinal
+pFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-08;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-08;
+        relTol          0;
+        maxIter         25;
+    }
+
+p_rghFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-08;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-08;
+        relTol          0;
+        maxIter         25;
+    }
+
+p_rghAdvFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-08;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-08;
+        relTol          0;
+        maxIter         25;
+    }
+
+
+/*
+    pc
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-07;
+        relTol          0;
+    }
+
+        pcFinal
+    {
+        $pc;
+        relTol          0;
+   
+
+    }
+*/
+
+pc
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          1e-06;
+        smoother        DICGaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+	maxIter		25;
+    }
+
+pcFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-08;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-08;
+        relTol          0;
+        maxIter         25;
+    }
+
+
+MagneticPotential
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          1e-06;
+        smoother        DICGaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+	maxIter		25;
+    }
+
+MagneticPotentialFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-08;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-08;
+        relTol          0;
+        maxIter         25;
+    }
+
+
+
+
+
+curvCoord
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          1e-06;
+        smoother        DICGaussSeidel;
+        nPreSweeps      0;
+        nPostSweeps     2;
+        cacheAgglomeration true;
+        nCellsInCoarsestLevel 10;
+        agglomerator    faceAreaPair;
+        mergeLevels     1;
+	maxIter		25;
+    }
+
+CurvCoordFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-08;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      0;
+            nPostSweeps     2;
+            nFinestSweeps   2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 10;
+            agglomerator    faceAreaPair;
+            mergeLevels     1;
+        }
+        tolerance       1e-08;
+        relTol          0;
+        maxIter         25;
+    }
+
+
+/*
+    U
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-06;
+        relTol          0;
+    }
+
+
+    U
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-06;
+        relTol          0;
+        nSweeps         1;
+    }
+*/
+
+    U
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-06;
+        relTol          1e-5;
+    }
+
+
+    UFinal
+    {
+        $U;
+        relTol          0;
+    }
+
+    UAdv
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-06;
+        relTol          1e-5;
+    }
+
+
+    UAdvFinal
+    {
+        $U;
+        relTol          0;
+    }
+
+
+    T
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-08;
+        relTol          0;
+        //solver          smoothSolver;
+        //smoother        GaussSeidel;
+        //tolerance       1e-06;
+        //relTol          1e-5;
+        //tolerance       1e-06;
+        //relTol          1e-5;
+    }
+
+    TFinal
+    {
+        $T;
+        relTol          0;
+    //    relTol          1e-5;
+    }
+
+
+}
+
+PIMPLE
+{
+    momentumPredictor   no;
+    transonic no;
+    nOuterCorrectors    1;
+    nCorrectors         2;
+    nNonOrthogonalCorrectors 0;
+
+    pRefCell          2140;
+    pRefValue          101325.;
+
+    pcRefCell          2140;
+    pcRefValue         0.;
+
+
+
+    rhoMin          rhoMin [ 1 -3  0 0 0 ] 0.02;
+    rhoMax          rhoMax [ 1 -3 0 0 0 ] 3.00;
+}
+
+relaxationFactors
+{
+/*
+
+    equations
+    {
+       rho  0.2;
+       U    0.7;
+       T    0.5;
+    }
+
+*/
+}
+
+
+// ************************************************************************* //

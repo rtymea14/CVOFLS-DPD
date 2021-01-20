@@ -1,0 +1,132 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+
+FoamFile
+{
+    version     2.2;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      solverOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+Kinetics
+{
+	folder	   		"/home/rthvc/data/DropletSmokeFoam/casesaufi/newdir/kinetics";
+	inertSpecies 		N2;
+}
+
+LiquidProperties
+{
+	folder	   		"/home/chimica2/saufi/mySolver/DropletSMOKE/LiquidProperties";
+	LiquidSpecies 		(H2O);
+        Fugacity                "Raoult";
+        Activity                "Ideal";
+        EoSforGasDensity        "IdealGas";
+        evaporationMechanism    "FicksLaw";
+        interfacialAreaCoefficientMethod    "Circle";
+        MagneticFieldIntensity   0.;
+        MagneticFieldExponent    -1.0;
+}
+
+PhysicalModel
+{
+	thermodynamicPressure		1e5;
+	strangAlgorithm 		"MomentumTransportReaction";
+        evaporation                     on;
+	homogeneousReactions 		off;
+	momentumEquations		on;
+	speciesEquations		on;
+	energyEquation			on;
+	mwCorrectionInDiffusionFluxes	on;
+        poyntingCorrection              off;
+        Tdroplet                        360.;
+        Tambient                        360.;
+        setTemperatureField             off;
+
+
+	constPressureBatchReactor 	true;
+	sparseJacobian			false;
+	massDiffusionInEnergyEquation	off;
+	diffusivityModel		"multi-component";
+	
+	thermophoreticEffect		off;
+	soretEffect			off;
+
+	includeDpDt			off;
+
+
+	zMixEquation			off;
+	tauEquation			off;
+	zMixDmixSpecies			N2;
+
+	minTemperature4Chemistry	0;
+}
+
+Radiation
+{
+	radiationModel "optically-thin";
+	environmentTemperature 300.;
+}
+
+Output
+{
+	gasProperties		on;
+	liquidProperties	on;
+	mixtureProperties	on;
+	gasRadiation		off;
+	formationRates		off;
+	diffusivities		off;
+}
+
+PolimiSoot
+{
+	thermophoreticEffectTag "BIN";
+	physicalSootDiffusivity	off;
+}
+
+OdeHomogeneous
+{
+	odeSolver 	"OpenSMOKE";
+	relTolerance 	1e-7;
+	absTolerance 	1e-12;
+	maximumOrder 	5;
+	fullPivoting 	false;
+
+	CHEMEQ2
+	{
+		epsilonMinimum	1e-2;
+		epsilonMaximum	1e2;
+		yMinimum	1e-32;
+		dtMinimum	1e-20;
+		subIterations	1;
+	}
+}
+
+PostProcessing
+{
+	soot	off;
+}
+
+Spark
+{
+	spark 		off;
+	position    	(5.95e-3  0.0 1.5e-3);
+	time		0.;
+	temperature 	2205;
+	duration 	0.025;
+	diameter 	1.5e-3;
+}
+
+#include "drgOptions"
+#include "isatOptions"
+#include "lewisNumbers"
+
+// ************************************************************************* //

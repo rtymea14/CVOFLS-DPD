@@ -1,0 +1,106 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      alpha.water;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+
+    symmetry
+    {
+        type            empty;
+       //   type   symmetryPlane;
+    //   type            zeroGradient;
+/*
+        type           constantAlphaContactAngle;
+        theta0         90;
+        limit          gradient;
+        value          uniform 0;
+*/
+
+
+/*
+type           dynamicAlphaContactAngle;
+        theta0         90;
+        thetaA         125;
+        thetaR         85;
+        uTheta         0.025;
+        limit          gradient;
+        value          uniform 0;
+*/
+    }
+
+    outerwall
+    {
+       type            zeroGradient;
+    }
+
+
+    inlet
+    {
+       type            zeroGradient;
+    }
+
+    outlet
+    {
+       type            zeroGradient;
+    }
+
+    sphere
+    {
+       type            zeroGradient;
+/*
+        type           constantAlphaContactAngle;
+        theta0         90;
+        limit          gradient;
+        value          uniform 0;
+*/
+
+/*
+type           dynamicAlphaContactAngle;
+        theta0         90;
+        thetaA         125;
+        thetaR         85;
+        uTheta         0.025;
+        limit          gradient;
+        value          uniform 0;
+*/
+
+    }
+
+
+    frontAndBackPlanes
+    {
+        type            empty;
+    }
+
+
+    frontAndBackPlanes_pos
+    {
+        type            wedge;
+
+    }
+    frontAndBackPlanes_neg
+    {
+        type            wedge;
+
+    }
+
+}
+
+// ************************************************************************* //

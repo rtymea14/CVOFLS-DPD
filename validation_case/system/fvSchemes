@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         Euler;
+}
+
+gradSchemes
+{
+    default       Gauss linear;
+}
+
+divSchemes
+{
+    div(rhoPhi,U)  Gauss linearUpwind grad(U);     
+    div(rhoPhiAdv,UAdv)  Gauss linearUpwind grad(U);     
+    div(((rho*nuEff)*dev2(T(grad(U)))))  Gauss linear; 
+    div((mu*dev2(grad(U).T()))) Gauss linear;
+    div((mixture_mu*dev2(grad(UAdv).T()))) Gauss linear;
+    div((mixture_mu*dev2(grad(U).T()))) Gauss linear;
+    div(phi,p) Gauss upwind;
+    div(phi,rho2)  Gauss upwind;
+    div(phiAdv,rho2)  Gauss upwind;
+    div(phi,rho1) Gauss upwind;
+    div(phiAdv,rho1)  Gauss upwind;
+    div(rhoPhi,Yi)   Gauss limitedLinear01 1;    
+    div(equilibriumYi,Yi)  Gauss limitedLimitedLinear 1 0 0;
+    div(equilibriumXi,Xi)  Gauss limitedLimitedLinear 1 0 0;
+    div(Jc,Yi) Gauss limitedLimitedLinear 1 0 1; //Gauss limitedLinear01 1;
+    div(rhoPhi,T)  Gauss linearUpwind grad(U);   
+    div(Jc,Ysati) Gauss limitedLinear01 1; 
+
+}
+
+laplacianSchemes
+{
+   // default        Gauss linear uncorrected;// orthogonal;
+    default         Gauss linear limited 0.5;  
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default     limited 0.5;  // orthogonal;// corrected;  
+}
+
+
+fluxRequired
+{
+    default         none;
+    p_rgh;
+    p_rghAdv;
+    pcorr;
+    alpha1;
+}
+
+
+
+// ************************************************************************* //
