@@ -1,0 +1,245 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+    class           dictionary;
+    object          couplingProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//===========================================================================//
+// sub-models & settings
+
+modelType "B"; // A or B
+
+couplingInterval 1000;
+
+voidFractionModel divided;//centre;//
+
+locateModel engine;//turboEngineM2M;//
+
+meshMotionModel noMeshMotion;
+
+regionModel allRegion;
+
+IOModel basicIO;
+
+probeModel off;
+
+dataExchangeModel twoWayMPI;//twoWayM2M;//twoWayFiles;//oneWayVTK;//
+
+averagingModel dilute;//dense;//
+
+clockModel off;//standardClock;
+
+smoothingModel off;// localPSizeDiffSmoothing;// constDiffSmoothing; //
+
+forceModels
+(
+    Stokes
+    ModLaEuScalarTemp
+    nanoParticleDrag
+    bubbleForce
+    Archimedes
+    //surfaceForce
+);
+
+momCoupleModels
+(
+    implicitCouple
+	//explicitCouple
+);
+
+turbulenceModelType turbulenceModel; //"RASProperties";//"LESProperties";//
+
+//===========================================================================//
+// sub-model properties
+
+ModLaEuScalarTempProps
+{
+    //verbose;
+    velFieldName "U";
+    tempFieldName "T";
+    voidfractionFieldName "voidfraction";
+    tempSourceFieldName "Tsource";
+    partTempName "Temp";
+    partHeatFluxName "convectiveHeatFlux";
+    lambda 1.0;
+    Cp 4219.0;
+    rho 1000;
+    nu 1e-6;
+    //densityFieldName "rho";
+    //viscosityFieldName "nu";
+}
+
+LaEuScalarTempProps
+{
+    velFieldName "U";
+    tempFieldName "T";
+    voidfractionFieldName "voidfraction";
+    tempSourceFieldName "Tsource";
+    partTempName "Temp";
+    partHeatFluxName "convectiveHeatFlux";
+    lambda 1;
+    Cp 4219;
+    densityFieldName "rho.water";
+}
+
+StokesProps
+{
+    //verbose;
+    velFieldName "U";
+    VOFvolumefractionFieldName "alpha.water";
+    stokeCoeff 1.0e-3;
+    interpolation;
+}
+
+nanoParticleDragProps
+{
+    //verbose;
+    VOFvolumefractionFieldName "alpha.water";
+    velFieldName "ddtU_";
+    tensorFieldName "gradU_";
+    massP 0.6926e-15;
+    interpolation;
+}
+
+bubbleForceProps
+{
+    //verbose;
+    VOFvolumefractionFieldName "alpha.water";
+    psiFieldName "psi";
+    sigma 1.0e-02;
+    KH 1.0e-20;
+    Kn 1.0e-1;
+    Ha 1.0e-20;
+    alphaThreshold 0.5;
+    deltaAlphaIn 0.1;
+    deltaAlphaOut 0.1;
+    interpolation;
+}
+
+interfaceForceProps
+{
+    //verbose;
+    VOFvolumefractionFieldName "alpha.water";
+    sigma 0.05891;
+    //sigma 0.001;
+    alphaThreshold 0.5;
+    deltaAlphaIn 0.1;
+    deltaAlphaOut 0.1;
+    interpolation;
+}
+
+surfaceForceProps
+{
+    //verbose;
+    VOFvoidfractionFieldName "alpha.phase1";
+    gradAlphaName gradAlpha;
+    sigma 0.05891;
+    //sigma 0.001;
+	theta 1.5708;
+    alphaThreshold 0.5;
+    deltaAlphaIn 0.1;
+    deltaAlphaOut 0.1;
+    interpolation;
+}
+
+ArchimedesProps
+{
+    densityFieldName "rho";
+    gravityFieldName "g";
+    treatDEM;
+}
+
+localPSizeDiffSmoothingProps
+{
+    lowerLimit 0.1;
+    upperLimit 1e10;
+    dSmoothingLength 1.5e-3;
+    Csmoothing    1.0; 
+}
+
+constDiffSmoothingProps
+{
+    lowerLimit 0.1;
+    upperLimit 1e10;
+    smoothingLength 1.5e-3;
+}
+
+implicitCoupleProps
+{
+    velFieldName "U";
+    granVelFieldName "Us";
+    voidfractionFieldName "voidfraction";
+    KslLimit 0;  // source switched off!!!
+}
+
+explicitCoupleProps
+{
+    flimit (1e10 1e10 1e10);
+}
+
+volWeightedAverageProps
+{
+    scalarFieldNames
+    (
+        voidfraction
+    );
+    vectorFieldNames
+    (
+    );
+    upperThreshold 0.999;
+    lowerThreshold 0;
+    verbose;
+}
+
+totalMomentumExchangeProps
+{
+    implicitMomExFieldName "Ksl";
+    explicitMomExFieldName "none";
+    fluidVelFieldName "U";
+    granVelFieldName "Us";
+    densityFieldName "rho";
+}
+
+particleCellVolumeProps
+{
+    upperThreshold 0.999;
+    lowerThreshold 0.;
+    verbose;
+}
+
+centreProps
+{
+    alphaMin 0.1;
+}
+
+engineProps
+{
+    treeSearch true;
+}
+
+
+dividedProps
+{
+    alphaMin 0.01;
+    scaleUpVol 1.0;
+}
+
+twoWayMPIProps
+{
+    liggghtsPath "../DEM90/in.colloid";
+	maxNumberOfParticles 10000;
+}
+// ************************************************************************* //
