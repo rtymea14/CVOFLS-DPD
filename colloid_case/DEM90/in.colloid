@@ -38,9 +38,9 @@ variable cutoffVDW equal 8*${radius}
 lattice fcc ${lat} 
 
 
-#pair_style hybrid/overlay  dpdfluid ${cut_global} yukawa_dpd ${kappa} ${cut_global}
-#pair_coeff 1 1 dpdfluid ${Hamakar} ${sigma} ${d1} ${d2} ${cutoff} 
-#pair_coeff 1 1 yukawa_dpd ${Ayukawa} ${radius} ${radius} ${cutoff} 
+pair_style hybrid/overlay  dpdfluid ${cut_global} yukawa_dpd ${kappa} ${cut_global}
+pair_coeff 1 1 dpdfluid ${Hamakar} ${sigma} ${d1} ${d2} ${cutoff} 
+pair_coeff 1 1 yukawa_dpd ${Ayukawa} ${radius} ${radius} ${cutoff} 
 ##pair_style hybrid/overlay  dpdfluid ${cut_global} yukawa/colloid ${kappa} ${cut_global}
 ##pair_coeff 1 1 yukawa/colloid ${a1} ${cutoff} 
 
@@ -64,9 +64,9 @@ fix zwalls all wall/gran/hertz/history primitive type 1 zplane 0.0 cohesion sjkr
 #fix bott all wall/reflect zlo 0 
 #fix left all wall/reflect zlo EDGE zhi EDGE
 #fix left all wall/reflect xlo EDGE xhi EDGE ylo EDGE yhi EDGE zlo EDGE zhi EDGE
-#fix 1rand all random_force ${temperature} ${temperature} ${damp} ${seed}
-#fix zwall all wall/colloid zlo 0 ${epsilonWall} ${sigmaWall} ${cutoff} units box 
-
+#fix zwall all wall/colloid zlo 0 ${epsilonWall} ${sigmaWall} ${cutoff} units box
+ 
+fix 1rand all random_force ${temperature} ${temperature} ${damp} ${seed}
 fix zwall all wall/vdw zlo 0 ${epsilonVDW} ${sigmaVDW} ${cutoffVDW} units box 
 
 #heat transfer
