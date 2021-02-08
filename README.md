@@ -58,9 +58,9 @@ There are two folders for the case. The `CFD` folder has `0`, `constant`, `syste
 
 The DPD simulation requires much smaller time steps than the CFD process. The time step for the DPD case is 1×10-9 s whereas the time step for the CFD case is 1×10-7 s which means that for each CFD iteration DPD runs for 100 iterations.
 
-The pinned contact angle evaporation and the colloid deposition for three contact angles are shown in the [figure](CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg) below.
+The pinned contact angle evaporation and the colloid deposition for three contact angles are shown in the [figure](colloid_case/results/Picture1.jpg) below.
 
-[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg" width="1100" height="600" />](CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg)
+[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg" width="1100" height="600" />](colloid_case/results/Picture1.jpg)
 
 ## Algorithm
 An overview of the algorithm used in CVOFLS-DPD solver is given below.
