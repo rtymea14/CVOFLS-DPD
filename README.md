@@ -39,7 +39,7 @@ The solver can be validated using the case in the [`validation_case`](validation
 
 This case demonstrates evaporation of a spherical micro-droplet,hanging from a thread, in ambient air. The gravity is ignored. Temperature of droplet continues to drop until it reaches wet bulb temperature. Except for a small initial phase, the dimensionless squared diameter follows the linear D2 law. More in the paper.
 
-<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure3.jpg" width="400" height="400" />
+<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure3.jpg" width="400" height="450" />
 
 To run the case do the following
 
