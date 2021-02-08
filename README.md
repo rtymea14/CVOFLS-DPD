@@ -58,7 +58,7 @@ There are two folders for the case. The `CFD` folder has `0`, `constant`, `syste
 
 The DPD simulation requires much smaller time steps than the CFD process. The time step for the DPD case is 1×10-9 s whereas the time step for the CFD case is 1×10-7 s which means that for each CFD iteration DPD runs for 100 iterations.
 
-![Bubble rising 2D](.jpg)
+<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg" width="600" height="500" />
 
 ## Algorithm
 An overview of the algorithm used in CVOFLS-DPD solver is given below.
