@@ -60,7 +60,7 @@ The DPD simulation requires much smaller time steps than the CFD process. The ti
 
 The pinned contact angle evaporation and the colloid deposition for three contact angles are shown in the [figure](colloid_case/results/Picture1.jpg) below.
 
-[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg" width="1100" height="600" />](colloid_case/results/Picture1.jpg)
+[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg" width="1000" height="600" />](colloid_case/results/Picture1.jpg)
 
 The following videos show colloid deposition for 90 degree contact angle.
 <img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Bottomviewbest.gif" />
@@ -68,6 +68,7 @@ The following videos show colloid deposition for 90 degree contact angle.
 
 ## Algorithm
 An overview of the algorithm used in CVOFLS-DPD solver is given below.
+
 [<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/CVOFLS_DPD/Figure2.jpg" width="400" height="600" />](CVOFLS_DPD/Figure2.jpg)
   
 ## Contribute
