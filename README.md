@@ -68,7 +68,7 @@ The following videos show colloid deposition for 90 degree contact angle.
 
 ## Algorithm
 An overview of the algorithm used in CVOFLS-DPD solver is given below.
-![Bubble rising 2D](.jpg)
+[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/CVOFLS_DPD/Figure2.jpg" width="400" height="600" />](CVOFLS_DPD/Figure2.jpg)
   
 ## Contribute
 Open to collaboration with other investigators studying phase-change and multiscale particle-fluid flows. Please [contact us](mailto:rthvc@umsystem.edu) if you are interested in expanding the solver or find bugs to correct. Limited support (on a case-by-case basis) or consulting servies can also be provided.
