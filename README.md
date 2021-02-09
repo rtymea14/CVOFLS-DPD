@@ -54,7 +54,7 @@ $ mpirun -np ${no. of processors} CVOFLSDPD -parallel
 ```
 [<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure4.jpg" width="1000" height="300" />](validation_case/results/Figure4.jpg)
 
-[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure5.jpg" width="1000" height="400" />](validation_case/results/Figure5.jpg)
+[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure5.jpg" width="1000" height="500" />](validation_case/results/Figure5.jpg)
 
 ## Nanoparticle self-assembly case ([`colloid_case`](colloid_case))
 The self-assembly of nanoparticles inside a liquid micro-droplet is studied using the CVOFLSDPD solver. Be sure to uncomment the particle coupling part and recompile, if it is commented out in the validation case.
