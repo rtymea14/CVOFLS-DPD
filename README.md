@@ -52,6 +52,9 @@ $ setFields
 $ decomposePar -force
 $ mpirun -np ${no. of processors} CVOFLSDPD -parallel
 ```
+[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure4.jpg" width="450" height="400" />](validation_case/results/Figure4.jpg)
+[<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure5.jpg" width="450" height="400" />](validation_case/results/Figure5.jpg)
+
 ## Nanoparticle self-assembly case ([`colloid_case`](colloid_case))
 The self-assembly of nanoparticles inside a liquid micro-droplet is studied using the CVOFLSDPD solver. Be sure to uncomment the particle coupling part and recompile, if it is commented out in the validation case.
 There are two folders for the case. The `CFD` folder has `0`, `constant`, `system` and `newdir` just like other case. The `DEM` folder has `in.colloid` file which initializes and solve the particle trajectories. The `Sphere2370FromDump.csv` file containes the initial coordinates for the 2370 nanoparticles. The case can be run in the same way as before using `decomposePar -force && mpirun -np ${no. of processors} CVOFLSDPD -parallel` commands. During simulation, a `liggghts.restart` file will appear which can be used to restart the simulation. This file should be tranferred to the `DEM` folder and in `in.colloid` file the `read_data` command should be commented out and `read_restart` should be uncommented.
