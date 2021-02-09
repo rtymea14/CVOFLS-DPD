@@ -62,6 +62,10 @@ The pinned contact angle evaporation and the colloid deposition for three contac
 
 [<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Picture1.jpg" width="1100" height="600" />](colloid_case/results/Picture1.jpg)
 
+The following videos show colloid deposition for 90 degree contact angle.
+<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Bottomviewbest.gif" />
+<img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/colloid_case/results/Sideviewbest.gif" />
+
 ## Algorithm
 An overview of the algorithm used in CVOFLS-DPD solver is given below.
 ![Bubble rising 2D](.jpg)
