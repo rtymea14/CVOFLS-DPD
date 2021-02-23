@@ -20,7 +20,7 @@ The software can handle
 * Heat transfers between particles and between particles and fluids
 * Parallel processing
 
-If you use this solver in a project or scholarly work, please include the following citation, [Tayeb and Zhang (2019)](https://doi.org/10.1115/IMECE2019-11953). 
+If you use this solver in a project or scholarly work, please include the following citation, [Tayeb and Zhang (2019)](#References). 
 
 ## Installation
 The current version of the code uses the [OpenFOAM 2.3.1 libraries](http://www.openfoam.org/archive/2.3.1/download/source.php). It uses [isoadvector](https://github.com/isoAdvector/isoAdvector) library for interface tarcking and adection. It also calculates the thermodynamics and transport properties of gases (diffusion coefficients, thermal conductivity, heat capacities, and viscosity) based on the correlations available in the [OpenSMOKE++](https://www.opensmokepp.polimi.it) library. The coupling with the particle solver which is [LIGGGHTS](https://www.cfdem.com/liggghtsr-open-source-discrete-element-method-particle-simulation-code) is done using [CFDEM](https://www.cfdem.com/cfdemrcoupling-open-source-cfd-dem-framework) library. Once all the libraries are installed, you can proceed to install the CVOFLSDPD solver. 
@@ -37,7 +37,7 @@ The solver can be validated using the case in the [`validation_case`](validation
 
 ## Microgravity droplet evaporation case ([`validation_case`](validation_case))
 
-This case demonstrates evaporation of a spherical micro-droplet,hanging from a thread, in ambient air. The gravity is ignored. Temperature of droplet continues to drop until it reaches wet bulb temperature. Except for a small initial phase, the dimensionless squared diameter follows the linear D2 law. More in the paper.
+This case demonstrates evaporation of a spherical micro-droplet,hanging from a thread, in ambient air. The gravity is ignored. Temperature of droplet continues to drop until it reaches wet bulb temperature. Except for a small initial phase, the dimensionless squared diameter follows the linear D2 law. More in the [paper](#References).
 
 <img src="https://github.com/rtymea14/CVOFLS-DPD/blob/main/validation_case/results/Figure3.jpg" width="450" height="400" />
 
@@ -83,3 +83,4 @@ This research was generously supported by the U.S. National Science Foundation.
 
 ## References
 * [Tayeb, R, Zhang, Y. "Controlling Evaporation Induced Self-Assembly of Polymeric Nanoparticles: A VOF-DPD Study." Proceedings of the ASME 2019 International Mechanical Engineering Congress and Exposition. Volume 8: Heat Transfer and Thermal Engineering. Salt Lake City, Utah, USA. November 11–14, 2019. V008T09A083. ASME.](https://doi.org/10.1115/IMECE2019-11953)
+* Tayeb, R, Zhang, Y. "Evaporation induced self-assembly of rough colloids: a multiscale simulation study." (Manuscript submitted for publication)
