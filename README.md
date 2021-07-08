@@ -83,4 +83,4 @@ This research was generously supported by the U.S. National Science Foundation.
 
 ## References
 * [Tayeb, R, Zhang, Y. "Controlling Evaporation Induced Self-Assembly of Polymeric Nanoparticles: A VOF-DPD Study." Proceedings of the ASME 2019 International Mechanical Engineering Congress and Exposition. Volume 8: Heat Transfer and Thermal Engineering. Salt Lake City, Utah, USA. November 11–14, 2019. V008T09A083. ASME.](https://doi.org/10.1115/IMECE2019-11953)
-* Tayeb, R, Zhang, Y. "Evaporation induced self-assembly of rough colloids: a multiscale simulation study." (Manuscript submitted for publication)
+* Tayeb, R, Zhang, Y. "Evaporation induced self-assembly of rough colloids: a multiscale simulation study." International Journal of Heat and Mass Transfer (2021) (accepted)
