@@ -20,7 +20,7 @@ The software can handle
 * Heat transfers between particles and between particles and fluids
 * Parallel processing
 
-If you use this solver in a project or scholarly work, please include the following citation, [Tayeb and Zhang (2019)](#References). 
+If you use this solver in a project or scholarly work, please include the following citation, [Tayeb and Zhang (2021)](#References). 
 
 ## Installation
 The current version of the code uses the [OpenFOAM 2.3.1 libraries](http://www.openfoam.org/archive/2.3.1/download/source.php). It uses [isoadvector](https://github.com/isoAdvector/isoAdvector) library for interface tarcking and adection. It also calculates the thermodynamics and transport properties of gases (diffusion coefficients, thermal conductivity, heat capacities, and viscosity) based on the correlations available in the [OpenSMOKE++](https://www.opensmokepp.polimi.it) library. The coupling with the particle solver which is [LIGGGHTS](https://www.cfdem.com/liggghtsr-open-source-discrete-element-method-particle-simulation-code) is done using [CFDEM](https://www.cfdem.com/cfdemrcoupling-open-source-cfd-dem-framework) library. Once all the libraries are installed, you can proceed to install the CVOFLSDPD solver. 
